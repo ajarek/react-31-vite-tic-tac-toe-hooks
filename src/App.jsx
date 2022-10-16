@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useState,createContext } from 'react'
 import './App.css'
 import { Header } from './components/Header/Header'
 import { Squares } from './components/Squares/Squares'
-
+export const AppContext = createContext()
 function App() {
-  const[turn, setTurn]=useState('')
+  const [status, setStatus] = useState(true)
   return (
     <div className='App'>
-      <Header player={turn}/>
+      <AppContext.Provider value={{status, setStatus}}>
+      <Header player={status?'X':'O'}/>
       <Squares/>
+      </AppContext.Provider>
     </div>
   )
 }

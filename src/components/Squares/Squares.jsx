@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react'
-
+import React, { useEffect, useState, useContext } from 'react'
+import { AppContext } from '../../App'
 import classes from './styles.module.css'
 
 export const Squares = (props) => {
   const { className, ...otherProps } = props
-
-  const [status, setStatus] = useState(true)
+  const { status, setStatus } = useContext(AppContext)
+  
   const [theArray, setTheArray] = useState([...Array(9)])
   const [result,setResult]=useState('')
   const setSign = (e) => {
